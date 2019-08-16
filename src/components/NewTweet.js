@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { handleAddTweet } from "../actions/tweets";
 
 const MAX_SIZE = 280;
 
@@ -9,14 +11,18 @@ class NewTweet extends Component {
 
   handleChange = event => {
     const text = event.target.value;
-
     this.setState(() => ({ text }));
   };
 
   handleSubmit = event => {
     event.preventDefault();
     const { text } = this.state;
-    console.log("New tweet", text);
+    const { dispatch, id } = this.props;
+
+    dispatch(handleAddTweet(text, id));
+    this.setState(() => ({
+      text: ""
+    }));
   };
 
   render() {
@@ -44,4 +50,4 @@ class NewTweet extends Component {
   }
 }
 
-export default NewTweet;
+export default connect()(NewTweet);

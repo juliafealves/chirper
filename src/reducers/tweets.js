@@ -8,20 +8,22 @@ function tweets(state = {}, action) {
         ...action.tweets
       };
     case TOGGLE_TWEET:
-      const tweet = state[action.id];
+      const currentTweet = state[action.id];
       return {
         ...state,
         [action.id]: {
-          ...tweet,
+          ...currentTweet,
           likes:
             action.hasLiked === true
-              ? tweet.likes.filter(userId => userId !== action.authedUser)
-              : tweet.likes.concat([action.authedUser])
+              ? currentTweet.likes.filter(
+                  userId => userId !== action.authedUser
+                )
+              : currentTweet.likes.concat([action.authedUser])
         }
       };
     case ADD_TWEET:
-      const { newTweet } = action;
-      const { id, replyingTo } = newTweet;
+      const { tweet } = action;
+      const { id, replyingTo } = tweet;
       let replyingTweet = {};
 
       if (replyingTo !== null) {
@@ -35,8 +37,8 @@ function tweets(state = {}, action) {
 
       return {
         ...state,
-        [id]: newTweet,
-        ...replying
+        [id]: tweet,
+        ...replyingTweet
       };
 
     default:

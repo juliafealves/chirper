@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { handleAddTweet } from "../actions/tweets";
 
 const MAX_SIZE = 280;
 
 class NewTweet extends Component {
   state = {
-    text: ""
+    text: "",
+    toHome: false
   };
 
   handleChange = event => {
@@ -21,12 +23,18 @@ class NewTweet extends Component {
 
     dispatch(handleAddTweet(text, id));
     this.setState(() => ({
-      text: ""
+      text: "",
+      toHome: !id
     }));
   };
 
   render() {
-    const { text } = this.state;
+    const { text, toHome } = this.state;
+
+    if (toHome) {
+      return <Redirect to="/" />;
+    }
+
     const tweetLeft = MAX_SIZE - text.length;
 
     return (

@@ -1,20 +1,24 @@
-# Chirper Project
+# :bird: Chirper Project
 
-This repo is a code-along with the first project in the [React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
+> This repository is reference the clone Twitter project, development with React and Redux.
 
-Most of the commits in this repository correspond to videos in the program.
+## Screens
 
-## Project Setup
+![Screen List Tweets](screen1.png)
+> List all tweets.
 
-* clone the Project - `git@github.com:udacity/reactnd-chirper-app.git`
-* install the dependencies - `npm install`
+![Screen Create New Tweet](screen2.png)
+> Create new tweet.
 
-## Contributing
+![Screen View Tweet](screen3.png)
+> View, like and reply tweet.
 
-Because this is a code-along project and the commits correspond to specific videos in the program, we will not be accepting pull requests.
+## How to execute?
+You must have Git and Node/npm installed on your localhost.
 
-If you feel like there's a major problem, please open an issue to discuss the problem and potential resolution.
-
-## License
-
-MIT
+```
+git clone https://github.com/juliafealves/chirper.git
+cd chirper
+npm i
+npm start
+```
